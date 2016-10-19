@@ -182,3 +182,15 @@ body {
   max-width: 1280px;
   margin: 0 auto;
 }
+
+.results {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+figure {
+  flex: 1 1 30%;
+  margin: 1% 1%;
+}
