@@ -1,26 +1,25 @@
 var myApp = {};
+// var ProgressBar = require('progressbar.min.js');
 myApp.selectedRegion = ""; //this is onclick string to store value of region
-myApp.activitesCities = [];
+//arrays to store filtered down cities
+myApp.activitiesCities = [];
 myApp.endCities = [];
 
-//activity booleans
-
-
-//=============//
-//==SELECTION==//
-//=============//
 //user lands on page
 //user is prompted to click on a region he would like to visit
 //when he clicks on this region, it will filter for all cities available in that specific region.
-//init fnct
-function worldMap(){
+function worldMap(){ //vector map begin
         $('#map').vectorMap({
       	map: 'continents_mill',
-      	backgroundColor:"white",
+      	backgroundColor:"transparent",
       	zoomOnScroll: false,
+        zoomButtons : false,  
+        zoomAnimate:false,
+        regionsSelectable: true, 
+        regionsSelectableOne:true,
       	regionStyle: {
 		  initial: {
-		    fill: 'green',
+		    fill: 'slateblue',
 		    "fill-opacity": 1,
 		    stroke: 'none',
 		    "stroke-width": 0,
@@ -40,8 +39,8 @@ function worldMap(){
         console.log(myApp.selectedRegion);
         myApp.findCityList();
         }
-      });//vector map end
-};
+      });
+}; // vector map end
 myApp.findCityList = function(){
     $.ajax({
         url: "https://nomadlist.com/api/v2/list/cities",
@@ -52,33 +51,21 @@ myApp.findCityList = function(){
         // console.log(cityList);
     });
 };//find city list end
-// filter for specifc city within city list
+// filter for specifc region within city list
 myApp.findCityInRegion = function(arr){
     var listOfSelectedCities = arr.filter(function(citiesInRegion){
         return citiesInRegion.info.region.name === myApp.selectedRegion;        
     });    
     console.log(listOfSelectedCities);
-    myApp.activitesCities.push(listOfSelectedCities);
-
+    myApp.activitiesCities.push(listOfSelectedCities);
 };
-//user will be prompted on what their interests are from a list
-$('form').on('submit',function(e){
-    e.preventDefault();
-    myApp.findCityWithActivites(myApp.activitesCities);       
-});
 //cities will be filtered further based on tag selections
-//cities will appear below map where users will be taken too
-//cities will display some data about cities
-//users can click a city to pull pictures of their favorite activites in those countries/and or other pictures
-//
-
-
-
-myApp.findCityWithActivites = function(filteredCities){
-
+//user will be prompted on what their interests are from a list
+myApp.findCityWithactivities = function(listOfSelectedCities){
+    //get bool for activities
     var $hiking = $("#hiking").is(":checked");
     var $history = $("#history").is(":checked");
-    var $nightlife = $("#nightlife").is(":checked");
+    var $outdoors = $("#outdoors").is(":checked");
     var $streetfood = $("#streetfood").is(":checked");
     var $cycling = $("#cycling").is(":checked");
     var $beach = $("#beach").is(":checked");
@@ -86,61 +73,78 @@ myApp.findCityWithActivites = function(filteredCities){
     var $spa = $("#spa").is(":checked");
     var $backpacker = $("#backpacker").is(":checked");
     
-  var activityFilteredCities = filteredCities.filter(function(citiesWithActivites){
-      for(var i = 0; i < citiesWithActivites.length; i++){
-          if (citiesWithActivites[i].tags.includes('hiking')&& $hiking) {
-              myApp.endCities.push(citiesWithActivites[i]);
+  var activityFilteredCities = myApp.activitiesCities.filter(function(citiesWithactivities){
+      for(var i = 0; i < citiesWithactivities.length; i++){
+
+          if (citiesWithactivities[i].tags.includes('history') && $history) { 
+             myApp.endCities.push(citiesWithactivities[i]);
         }
-          if (citiesWithActivites[i].tags.includes('history') && $history) { 
-             myApp.endCities.push(citiesWithActivites[i]);
+          if (citiesWithactivities[i].tags.includes('outdoors') && $outdoors) { 
+             myApp.endCities.push(citiesWithactivities[i]);
         }
-          if (citiesWithActivites[i].tags.includes('nightlife') && $nightlife) { 
-             myApp.endCities.push(citiesWithActivites[i]);
+          if (citiesWithactivities[i].tags.includes('streetfood') && $streetfood) { 
+             myApp.endCities.push(citiesWithactivities[i]);
         }
-          if (citiesWithActivites[i].tags.includes('streetfood') && $streetfood) { 
-             myApp.endCities.push(citiesWithActivites[i]);
+          if (citiesWithactivities[i].tags.includes('cycling') && $cycling) { 
+             myApp.endCities.push(citiesWithactivities[i]);
         }
-          if (citiesWithActivites[i].tags.includes('cycling') && $cycling) { 
-             myApp.endCities.push(citiesWithActivites[i]);
+          if (citiesWithactivities[i].tags.includes('beach') && $beach) { 
+             myApp.endCities.push(citiesWithactivities[i]);
         }
-          if (citiesWithActivites[i].tags.includes('beach') && $beach) { 
-             myApp.endCities.push(citiesWithActivites[i]);
+          if (citiesWithactivities[i].tags.includes('temples') && $temples) { 
+             myApp.endCities.push(citiesWithactivities[i]);
         }
-          if (citiesWithActivites[i].tags.includes('temples') && $temples) { 
-             myApp.endCities.push(citiesWithActivites[i]);
-        }
-          if (citiesWithActivites[i].tags.includes('spa') && $spa ) { 
-             myApp.endCities.push(citiesWithActivites[i]);
+          if (citiesWithactivities[i].tags.includes('spa') && $spa ) { 
+             myApp.endCities.push(citiesWithactivities[i]);
         }            
-          if (citiesWithActivites[i].tags.includes('backpacker') && $backpacker) { 
-             myApp.endCities.push(citiesWithActivites[i]);
-        }                               
+          if (citiesWithactivities[i].tags.includes('backpacker') && $backpacker) { 
+             myApp.endCities.push(citiesWithactivities[i]);
+        }
+          if(!$backpacker && !$history &&!$outdoors &&!$hiking && !$streetfood && !$cycling && !$beach && !$spa && !$temples && !$backpacker){
+              myApp.endCities.push(citiesWithactivities[i]);
+          }                               
     }
     return myApp.endCities;
   });
-  console.log(myApp.endCities);
-  myApp.displayCities(myApp.endCities);
+  var lastFilter = _.uniq(myApp.endCities);
+  myApp.displayCities(lastFilter);
 };
 
 myApp.displayCities = function(finalArray){
-    finalArray.forEach(function(individualCity){
+    finalArray.forEach(function(individualCity,i){
+
+        var leisureScoreNumber = individualCity.scores.leisure * 250;
+        var nightlifeScoreNumber = individualCity.scores.nightlife * 250;
+        var safetyScoreNumber = individualCity.scores.safety * 250;
     
         // for (var i = 0; i < finalArray.length; i++){
+        var $results = $("#results");
         var $cityContainer = $('<figure>');
         var $cityName = $("<h3>").text(individualCity.info.city.name);
         var $countryName = $("<h4>").text(individualCity.info.country.name);
-        // var $lesiureScore = $('<p>')
-        
-        $cityContainer.append($cityName,$countryName);
-        console.log($cityContainer);
-        $("#results").append($cityContainer);
-        });
-    // }
+        var $leisureLabel = $('<p>').text("Leisure Rating");
+        var $leisureScore = $('<div class="progress ' + ((leisureScoreNumber < 75) ? 'red ' : 'green ')+((leisureScoreNumber < 175 && leisureScoreNumber > 75) ? 'yellow ' : 'green ') + '">').width(leisureScoreNumber);
+        var $nightlifeLabel = $('<p>').text("Nightlife Rating");
+        var $nightlifeScore = $('<div class="progress ' + ((nightlifeScoreNumber < 75) ? 'red ' : 'green ')+((nightlifeScoreNumber < 175 && nightlifeScoreNumber > 75) ? 'yellow ' : 'green ') + '">').width(nightlifeScoreNumber);
+        var $safetyLabel = $('<p>').text("Leisure Rating");
+        var $safetyScore = $('<div class="progress ' + ((safetyScoreNumber < 75) ? 'red ' : 'green ')+((safetyScoreNumber < 175 && safetyScoreNumber > 75) ? 'yellow ' : 'green ') + '">').width(safetyScoreNumber);
+        var $airbnbScore = $('<p>').text("Airbnb average one night stay: $" + individualCity.cost.airbnb_median.USD);
+        var $cityImage = $('<div>').css(
+            "background-image", "url(https://nomadlist.com" +individualCity.media.image['250']+")"
+        );
+
+        $cityContainer.append($cityName,$countryName,$cityImage,$leisureLabel,$leisureScore,$nightlifeLabel,$nightlifeScore,$safetyLabel,$safetyScore,$airbnbScore);
+        $results.flickity('append',$cityContainer);
+    });
 }
 
-
-
-
+$('form').on('submit',function(e){
+    e.preventDefault();
+    myApp.findCityWithactivities(myApp.activitiesCities);
+});
+//cities will appear below map where users will be taken too
+//cities will display some data about cities
+//users can click a city to pull pictures of their favorite activities in those countries/and or other pictures
 
 myApp.init = function(){
     worldMap();    
@@ -150,3 +154,15 @@ $(document).ready(function(){ //doc rdy
     myApp.init();     
 }); //doc rdy end
 
+var bar;
+function makeBar(){
+    bar = new ProgressBar.Line('#container', {
+    strokeWidth: 2,
+    easing: 'linear',
+    color: '#5AC8FA ',
+    trailColor: 'transparent',
+    trailWidth: 2        
+    });
+};
+
+// Value from 0.0 to 1.0
