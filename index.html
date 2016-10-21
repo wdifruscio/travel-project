@@ -18,54 +18,60 @@
         <meta name="twitter:description" content="description">
         <title>Untitled</title>
         <link rel="icon" type="image/png" href="favicon.png">
+        <link href="https://fonts.googleapis.com/css?family=Pathway+Gothic+One|Ubuntu:400,700" rel="stylesheet">
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="css/jquery-jvectormap-2.0.3.css">
         <link rel="stylesheet" href="https://unpkg.com/flickity@2.0/dist/flickity.css" media="screen">
     </head>
     <body>
         <header>
-            <h1>Find your next adventure.</h1>
-            <button>Start Here</button>
+            <hgroup>
+                <h1>Find your adventure.</h1>
+                <a class="btn___home" href="#map___section">Start Here</a>                
+            </hgroup>
         </header>
-        <section class="map">
-            <div class="wrapper">
-            <h1>Where to next dude?</h1>
-            <div class="map" id="map"></div>
-            </div>
+        <section class="map___section" id="map___section">
+            <hgroup class="section___title">
+                <h1>Where to next?</h1>
+                <p>Select a continent you would like to travel.</p>
+            </hgroup>
+                <div class="map" id="map"></div>
         </section>
-        <section class="activitySelections">
+        <section class="section___activity" id="section___activity">
             <div class="wrapper">
-                <form>
-                    <h2>I need to go somewhere with... (you can leave it blank dude)</h2>
-                    <div class="container">
-                    <input type="checkbox" name="selectedActivities" id="hiking" value="hiking">
-                    <label for="">Hiking</label>
+                <div class="loader"></div>
+                <hgroup class="section___title" id="form___title">
+                    <h2>Points of Interest</h2>
+                    <p>Click the boxes if you want to find something with....</p>
+                </hgroup>
+                    <form>
+                        <input type="checkbox" name="selectedActivities" id="hiking" value="hiking">
+                        <label for="hiking">Hiking</label>
 
-                    <input type="checkbox" name="selectedActivities" id="history" value="history">
-                    <label for="">History</label>
-  
-                    <input type="checkbox" name="selectedActivities" id="outdoors" value="outdoors">
-                    <label for="">Outdoors</label>
-                    
-                    <input type="checkbox" name="selectedActivities" id="streetfood" value="streetfood">
-                    <label for="">Diving</label>
-                    
-                    <input type="checkbox" name="selectedActivities" id="cycling" value="cycling">
-                    <label for="">Cycling</label>
+                        <input type="checkbox" name="selectedActivities" id="history" value="history">
+                        <label for="history">History</label>
+    
+                        <input type="checkbox" name="selectedActivities" id="outdoors" value="outdoors">
+                        <label for="outdoors">Outdoors</label>
+                        
+                        <input type="checkbox" name="selectedActivities" id="streetfood" value="streetfood">
+                        <label for="streetfood">Diving</label>
+                        
+                        <input type="checkbox" name="selectedActivities" id="cycling" value="cycling">
+                        <label for="cycling">Cycling</label>
 
-                    <input type="checkbox" name="selectedActivities" id="beach" value="beach">
-                    <label for="">Beach</label>
+                        <input type="checkbox" name="selectedActivities" id="beach" value="beach">
+                        <label for="beach">Beach</label>
 
-                    <input type="checkbox" name="selectedActivities" id="temples" value="temples">
-                    <label for="">Temples</label>
+                        <input type="checkbox" name="selectedActivities" id="temples" value="temples">
+                        <label for="temples">Temples</label>
 
-                    <input type="checkbox" name="selectedActivities" id="spa" value="spa">
-                    <label for="">Spa</label>
+                        <input type="checkbox" name="selectedActivities" id="spa" value="spa">
+                        <label for="spa">Spa</label>
 
-                    <input type="checkbox" name="selectedActivities" id="backpacker" value="backpacker">
-                    <label for="">Backpacker Friendly</label>
-                    </div>
-                    <input type="submit" value="submit">
+                        <input type="checkbox" name="selectedActivities" id="backpacker" value="backpacker">
+                        <label for="backpacker">Backpacker Friendly</label>
+                    <input type="submit" value="submit" class="btn___home">
                 </form>
             </div>
         </section>
@@ -73,11 +79,12 @@
             </div>
         </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
         <script src="https://unpkg.com/flickity@2.0/dist/flickity.pkgd.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
         <script src ="js/jquery-jvectormap-2.0.3.min.js"></script>
         <script src="js/jquery-jvectormap-continents-mill.js"></script>
+        <script src="js/jquery.vide.min.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>

@@ -1,9 +1,36 @@
 var myApp = {};
-// var ProgressBar = require('progressbar.min.js');
 myApp.selectedRegion = ""; //this is onclick string to store value of region
 //arrays to store filtered down cities
 myApp.activitiesCities = [];
 myApp.endCities = [];
+
+//vars for some functions
+var $results = $('#results');
+var $showActivites = $('.section___activity');
+var $loader = $('.loader');
+
+//scroll down and fadeIn fnct
+function mapClick(){
+    myApp.findCityList();
+    $showActivites.fadeIn();
+        setTimeout(function(){
+            window.location.href='#section___activity';
+        },50);
+};
+
+
+//label onclick funct
+$('label').on('click',function(){
+    $(this).toggleClass('blue');
+});
+
+//form submit
+$('form').on('submit',function(e){
+    e.preventDefault();
+    $results.css('opacity', '1');
+    $results.css('height', 'auto');
+    myApp.findCityWithactivities(myApp.activitiesCities);
+});
 
 //user lands on page
 //user is prompted to click on a region he would like to visit
@@ -11,6 +38,11 @@ myApp.endCities = [];
 function worldMap(){ //vector map begin
         $('#map').vectorMap({
       	map: 'continents_mill',
+        focusOn:{
+            scale:1.1,
+            x:-1.2,
+            y:-2,
+        },
       	backgroundColor:"transparent",
       	zoomOnScroll: false,
         zoomButtons : false,  
@@ -19,7 +51,7 @@ function worldMap(){ //vector map begin
         regionsSelectableOne:true,
       	regionStyle: {
 		  initial: {
-		    fill: 'slateblue',
+		    fill: '#a4def9',
 		    "fill-opacity": 1,
 		    stroke: 'none',
 		    "stroke-width": 0,
@@ -30,22 +62,27 @@ function worldMap(){ //vector map begin
 		    cursor: 'pointer'
 		  },
 		  selected: {
-		    fill: '#fdc300'
+		    fill: 'white'
 		  }
       	},
         onRegionClick: function (event, code) {
         var map = $('#map').vectorMap('get', 'mapObject');
         myApp.selectedRegion = map.getRegionName(code);
         console.log(myApp.selectedRegion);
-        myApp.findCityList();
+        mapClick();
         }
       });
 }; // vector map end
+//find city function
 myApp.findCityList = function(){
     $.ajax({
         url: "https://nomadlist.com/api/v2/list/cities",
         dataType: "json"
     }).then(function(res){
+        $loader.hide();
+        $('form').fadeIn();
+        $('form').css('display','flex');
+        $("#form___title").fadeIn();   
         var cityList = res.result;
         myApp.findCityInRegion(cityList);
         // console.log(cityList);
@@ -55,7 +92,7 @@ myApp.findCityList = function(){
 myApp.findCityInRegion = function(arr){
     var listOfSelectedCities = arr.filter(function(citiesInRegion){
         return citiesInRegion.info.region.name === myApp.selectedRegion;        
-    });    
+    });
     console.log(listOfSelectedCities);
     myApp.activitiesCities.push(listOfSelectedCities);
 };
@@ -110,6 +147,7 @@ myApp.findCityWithactivities = function(listOfSelectedCities){
   myApp.displayCities(lastFilter);
 };
 
+//display cities function
 myApp.displayCities = function(finalArray){
     finalArray.forEach(function(individualCity,i){
 
@@ -117,52 +155,56 @@ myApp.displayCities = function(finalArray){
         var nightlifeScoreNumber = individualCity.scores.nightlife * 250;
         var safetyScoreNumber = individualCity.scores.safety * 250;
     
-        // for (var i = 0; i < finalArray.length; i++){
         var $results = $("#results");
         var $cityContainer = $('<figure>');
+
+        var $cityHeader = $('<div>').css(
+            "background-image", "linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url(https://nomadlist.com" +individualCity.media.image['250']+")"
+        );
+
         var $cityName = $("<h3>").text(individualCity.info.city.name);
         var $countryName = $("<h4>").text(individualCity.info.country.name);
         var $leisureLabel = $('<p>').text("Leisure Rating");
         var $leisureScore = $('<div class="progress ' + ((leisureScoreNumber < 75) ? 'red ' : 'green ')+((leisureScoreNumber < 175 && leisureScoreNumber > 75) ? 'yellow ' : 'green ') + '">').width(leisureScoreNumber);
         var $nightlifeLabel = $('<p>').text("Nightlife Rating");
         var $nightlifeScore = $('<div class="progress ' + ((nightlifeScoreNumber < 75) ? 'red ' : 'green ')+((nightlifeScoreNumber < 175 && nightlifeScoreNumber > 75) ? 'yellow ' : 'green ') + '">').width(nightlifeScoreNumber);
-        var $safetyLabel = $('<p>').text("Leisure Rating");
+        var $safetyLabel = $('<p>').text("Safety Rating");
         var $safetyScore = $('<div class="progress ' + ((safetyScoreNumber < 75) ? 'red ' : 'green ')+((safetyScoreNumber < 175 && safetyScoreNumber > 75) ? 'yellow ' : 'green ') + '">').width(safetyScoreNumber);
         var $airbnbScore = $('<p>').text("Airbnb average one night stay: $" + individualCity.cost.airbnb_median.USD);
-        var $cityImage = $('<div>').css(
-            "background-image", "url(https://nomadlist.com" +individualCity.media.image['250']+")"
-        );
+        var $imageAnchor = $('<a href="http://www.facebook.com">').text("click here for some photos");
 
-        $cityContainer.append($cityName,$countryName,$cityImage,$leisureLabel,$leisureScore,$nightlifeLabel,$nightlifeScore,$safetyLabel,$safetyScore,$airbnbScore);
+
+        $cityHeader.append($cityName,$countryName);
+        $cityContainer.append($cityHeader,$leisureLabel,$leisureScore,$nightlifeLabel,$nightlifeScore,$safetyLabel,$safetyScore,$airbnbScore,$imageAnchor);
         $results.flickity('append',$cityContainer);
     });
 }
 
-$('form').on('submit',function(e){
-    e.preventDefault();
-    myApp.findCityWithactivities(myApp.activitiesCities);
-});
 //cities will appear below map where users will be taken too
 //cities will display some data about cities
 //users can click a city to pull pictures of their favorite activities in those countries/and or other pictures
 
 myApp.init = function(){
-    worldMap();    
+    $('header').vide('videos/bgvid');
+    worldMap();
 }; //init end
 
 $(document).ready(function(){ //doc rdy
     myApp.init();     
 }); //doc rdy end
 
-var bar;
-function makeBar(){
-    bar = new ProgressBar.Line('#container', {
-    strokeWidth: 2,
-    easing: 'linear',
-    color: '#5AC8FA ',
-    trailColor: 'transparent',
-    trailWidth: 2        
-    });
-};
-
-// Value from 0.0 to 1.0
+//smooth scroll
+$(function() {
+  $('a[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
