@@ -172,7 +172,7 @@ body {
   margin: 0;
   padding: 0;
   background: #a4def9;
-  color: #eaeaea;
+  color: whitesmoke;
   font-family: "Ubuntu", sans-serif;
 }
 
@@ -229,7 +229,7 @@ h1, h2 {
 .loader:before {
   width: 5.2em;
   height: 10.2em;
-  background: #eaeaea;
+  background: whitesmoke;
   border-radius: 10.2em 0 0 10.2em;
   top: -0.1em;
   left: -0.1em;
@@ -251,13 +251,13 @@ h1, h2 {
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
-  background: #eaeaea;
+  background: whitesmoke;
 }
 
 .loader:after {
   width: 5.2em;
   height: 10.2em;
-  background: #eaeaea;
+  background: whitesmoke;
   border-radius: 0 10.2em 10.2em 0;
   top: -0.1em;
   left: 5.1em;
@@ -291,7 +291,7 @@ h1, h2 {
 
 .btn___home---header {
   background: rgba(0, 233, 197, 0.9);
-  color: #eaeaea;
+  color: #120e1c;
   padding: 15px 45px;
   margin: 20px auto;
   text-transform: uppercase;
@@ -300,15 +300,17 @@ h1, h2 {
   text-decoration: none;
   letter-spacing: 1px;
   transition: 0.3s all ease;
+  border: 2px solid transparent;
 }
 
 .btn___home---header:hover {
   color: #120e1c;
-  background: rgba(234, 234, 234, 0.9);
+  background: rgba(245, 245, 245, 0.9);
+  border: 2px solid black;
 }
 
 .btn___home {
-  background: #eaeaea;
+  background: whitesmoke;
   color: #120e1c;
   border: 3px solid #120e1c;
   padding: 15px 45px;
@@ -326,7 +328,7 @@ figure {
   width: 300px;
   margin: 5px 5px;
   padding: 25px 15px;
-  background-color: #eaeaea;
+  background-color: whitesmoke;
   background-attachment: top center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -350,7 +352,7 @@ figure div {
 figure div h3, figure div h4 {
   font-size: 2.5rem;
   line-height: 1rem;
-  color: #eaeaea;
+  color: whitesmoke;
   font-family: "Pathway Gothic One", sans-serif;
   text-transform: uppercase;
 }
@@ -385,14 +387,16 @@ figure a {
   padding: 5px;
   text-align: left;
   font-weight: 600;
-  border-radius: 2px;
+  border: 2px solid transparent;
+  border-radius: 1px;
+  text-decoration: none;
   color: #120e1c;
   font-size: 1rem;
   position: relative;
 }
 
 figure a:after {
-  content: '➜';
+  content: '→';
   position: absolute;
   right: -15px;
   top: 50%;
@@ -666,7 +670,7 @@ hgroup h1 {
   font-size: 8rem;
   letter-spacing: 5px;
   text-transform: uppercase;
-  color: #eaeaea;
+  color: whitesmoke;
 }
 
 .map___section {
@@ -693,7 +697,7 @@ hgroup h1 {
 }
 
 .section___activity .wrapper {
-  background: #eaeaea;
+  background: whitesmoke;
   padding: 50px;
   box-shadow: 1px 1px 5px rgba(128, 128, 128, 0.5);
 }
@@ -725,7 +729,7 @@ hgroup h1 {
 
 .section___activity form input[type=checkbox] {
   display: none;
-  background: #eaeaea;
+  background: whitesmoke;
 }
 
 .section___activity form .label-box {
@@ -750,7 +754,7 @@ hgroup h1 {
 
 .section___activity form input[type=submit] {
   font-size: 2.2rem;
-  color: #eaeaea;
+  color: whitesmoke;
   flex: 0 1 200px;
   margin: 10px auto;
   display: block;

@@ -58,16 +58,16 @@ figure{
         text-align: left;
         font-weight:600;
         // text-transform:uppercase;
-        // border:2px solid black;
-        border-radius:2px;
+        border:2px solid transparent;
+        border-radius:1px;
         // font-family:$titlefont;
-        // text-decoration:none;
+        text-decoration:none;
         color:$black;
         // letter-spacing:1px;
         font-size:1rem;
         position:relative;
         &:after{
-            content:'➜';
+            content:'→';
             position:absolute;
             right:-15px;
             top:50%;

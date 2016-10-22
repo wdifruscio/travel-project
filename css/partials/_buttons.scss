@@ -1,6 +1,6 @@
 .btn___home---header{
     background: rgba($teal,0.9);
-    color:$white;
+    color:$black;
     padding:15px 45px;
     margin:20px auto;
     text-transform: uppercase;
@@ -9,9 +9,11 @@
     text-decoration:none;
     letter-spacing:1px;
     transition:0.3s all ease;
+    border:2px solid transparent;
     &:hover{
         color:$black;
         background:rgba($white,0.9);
+        border:2px solid black;
     }
 }
 
