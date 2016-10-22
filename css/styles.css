@@ -125,8 +125,6 @@ input[type=checkbox], input[type=radio] {
 
 input[type=search] {
   -webkit-appearance: textfield;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
   box-sizing: content-box;
 }
 
@@ -163,8 +161,6 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 * {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -215,9 +211,15 @@ h1, h2 {
 }
 
 .flex-container {
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .loader,
@@ -240,7 +242,8 @@ h1, h2 {
   top: -0.1em;
   left: -0.1em;
   -webkit-transform-origin: 5.2em 5.1em;
-  transform-origin: 5.2em 5.1em;
+  -ms-transform-origin: 5.2em 5.1em;
+      transform-origin: 5.2em 5.1em;
   -webkit-animation: load2 2s infinite ease 1.5s;
   animation: load2 2s infinite ease 1.5s;
 }
@@ -268,7 +271,8 @@ h1, h2 {
   top: -0.1em;
   left: 5.1em;
   -webkit-transform-origin: 0px 5.1em;
-  transform-origin: 0px 5.1em;
+  -ms-transform-origin: 0px 5.1em;
+      transform-origin: 0px 5.1em;
   -webkit-animation: load2 2s infinite ease;
   animation: load2 2s infinite ease;
 }
@@ -330,7 +334,9 @@ h1, h2 {
 
 .btn___restart {
   color: black;
-  align-self: flex-end;
+  -webkit-align-self: flex-end;
+      -ms-flex-item-align: end;
+          align-self: flex-end;
 }
 
 figure {
@@ -351,8 +357,12 @@ figure h3, figure h4 {
 }
 
 figure div {
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   background-repeat: no-repeat;
   background-size: cover;
   background-color: rgba(18, 14, 28, 0.5);
@@ -411,7 +421,9 @@ figure a:after {
   position: absolute;
   right: -15px;
   top: 50%;
-  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 figure a:last-child {
@@ -501,7 +513,8 @@ http://flickity.metafizzy.co
   cursor: pointer;
   /* vertically center */
   -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
 }
 
 .flickity-prev-next-button:hover {
@@ -591,9 +604,15 @@ http://flickity.metafizzy.co
 header {
   height: 100vh;
   min-height: 600px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 hgroup {
@@ -616,7 +635,9 @@ hgroup h1 {
 
 .map___section hgroup {
   position: absolute;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
   left: 50%;
   z-index: 50;
 }
@@ -652,7 +673,9 @@ hgroup h1 {
   position: absolute;
   bottom: -25px;
   left: 50%;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
   height: 3px;
   width: 75px;
   background: #a4def9;
@@ -661,8 +684,12 @@ hgroup h1 {
 .section___activity form {
   padding-top: 2% 0;
   display: none;
-  flex-wrap: wrap;
-  justify-content: center;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .section___activity form input[type=checkbox] {
@@ -671,7 +698,9 @@ hgroup h1 {
 }
 
 .section___activity form .label-box {
-  flex: 1 1 150px;
+  -webkit-flex: 1 1 150px;
+      -ms-flex: 1 1 150px;
+          flex: 1 1 150px;
 }
 
 .section___activity form label {
@@ -693,7 +722,9 @@ hgroup h1 {
 .section___activity form input[type=submit], .section___activity form .btn___startover {
   font-size: 2.2rem;
   color: whitesmoke;
-  flex: 0 1 200px;
+  -webkit-flex: 0 1 200px;
+      -ms-flex: 0 1 200px;
+          flex: 0 1 200px;
   margin: 10px auto;
   display: block;
   color: #120e1c;
@@ -842,7 +873,9 @@ footer a {
 @media all and (max-width: 375px) {
   form label {
     padding: 5px;
-    flex: 1 1 40%;
+    -webkit-flex: 1 1 40%;
+        -ms-flex: 1 1 40%;
+            flex: 1 1 40%;
     text-align: center;
   }
   form input[type=submit] {

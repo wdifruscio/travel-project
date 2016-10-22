@@ -5,23 +5,22 @@
         <meta name="description" content="">
         <meta name="author" content="Sally Linns">
         <meta name="keywords" content="Developer, Designer, Photographer">
-<!--         <meta name="robots" content=""> -->
+        <link rel="icon" type="image" href="assets/favicon.ico">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta property="og:url" content="">
         <meta property="og:type" content="">
         <meta property="og:title" content="">
-        <meta property="og:description" content="">
+        <meta property="og:description" content="Travel App that looks at leisure, saftey and nightlife ratings of cities, sorted by region and filtered for particular activities.">
         <meta property="og:image" content="">
-        <meta name="twitter:card" content="summary/description">
+        <meta name="twitter:card" content="">
         <meta name="twitter:url" content="https://website.com">
-        <meta name="twitter:title" content="Title of website">
-        <meta name="twitter:description" content="description">
+        <meta name="twitter:title" content="Find Your Adventure">
+        <meta name="twitter:description" content="Destination finder for everyone.">
         <title>Find Your Adventure</title>
         <link href="https://fonts.googleapis.com/css?family=Pathway+Gothic+One|Ubuntu:400,700" rel="stylesheet">
         <link rel="stylesheet" href="css/swipebox.min.css">
         <link rel="stylesheet" href="css/jquery-jvectormap-2.0.3.css">
         <link rel="stylesheet" href="css/styles.css"> 
-        
     </head>
     <body>
         <header>
@@ -33,7 +32,7 @@
         <section class="map___section" id="map___section">
             <hgroup class="section___title">
                 <h1>Where to next?</h1>
-                <p>Select a continent you would like to travel.</p>
+                <p>Pick a continent and start exploring.</p>
             </hgroup>
                 <div class="map" id="map"></div>
         </section>
@@ -42,7 +41,7 @@
                 <div class="loader" id="loaderOne"></div>
                 <hgroup class="section___title" id="form___title">
                     <h2>Points of Interest</h2>
-                    <p>Click the boxes if you want to find something with these activities.<strong> Leave blank </strong>to return all cities from that region.</p>
+                    <p>Optional: Select any activities you’d be interested in. To return all cities from that region, <strong>leave tags unselected </strong></p>
                 </hgroup>
                     <form>
                         <div class="flex-container">
@@ -83,14 +82,14 @@
         <section class="section___results">
             <hgroup class="section___title wrapper">
                 <h1>Here are your results!</h1>
-                <p>If you didn't get what you wanted, try not filtering for activities to return all the cities in that region.</p>
+                <p>If you didn't get what you wanted, try deselecting some activities.</p>
             </hgroup>
             <div class="results" id="results"></div>
             <a href="index.html" class ="btn___main">Start Over</a>
         </section>
         <footer class="wrapper">
-            <p>Developed by <a href="www.willcodes.ca" target="_blank">willcodes.</a></p>
-            <p>Data and pictures from <a href="www.nomadlist.com" target="_blank">The Nomad List</a> and <a href="pixabay.com">Pixabay</a></p>
+            <p>Developed by <a href="http://www.willcodes.ca" target="_blank">willcodes.</a></p>
+            <p>Data and pictures from <a href="http://www.nomadlist.com" target="_blank">The Nomad List</a> and <a href="pixabay.com">Pixabay</a></p>
         </footer>
         <!--modal-->                
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
@@ -100,6 +99,6 @@
         <script src="js/jquery-jvectormap-continents-mill.js"></script>
         <script src="js/jquery.vide.min.js"></script>
         <script src="js/jquery.swipebox.min.js"></script>  
-        <script src="js/main.js"></script>
+        <script src="js/main-dist.js"></script>
     </body>
 </html>

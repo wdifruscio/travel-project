@@ -24,23 +24,21 @@ function submitClick() {
     $results.fadeIn();
     $('.section___results').show();
 };
-
 //label onclick funct
 $('label').on('click',function(){
     $(this).toggleClass('teal');
 });
-
-//form submit
+//form submit function
 $('form').on('submit',function(e){
     e.preventDefault();
     submitClick();
     myApp.findCityWithactivities(myApp.activitiesCities);
     window.scrollTo(0,document.body.scrollHeight); 
 });
-
 //user lands on page
 //user is prompted to click on a region he would like to visit
 //when he clicks on this region, it will filter for all cities available in that specific region.
+//below map initialize function will start the function mapClick which initializes the program
 function worldMap(){ //vector map begin
         $('#map').vectorMap({
       	map: 'continents_mill',
@@ -158,8 +156,9 @@ myApp.findCityWithactivities = function(listOfSelectedCities){
   var lastFilter = _.uniq(myApp.endCities);
   myApp.displayCities(lastFilter);
 };
-
 //display cities function
+//cities will appear below map where users will be taken too
+//cities will display some data about cities
 myApp.displayCities = function(finalArray){
     finalArray.forEach(function(individualCity,i){
 
@@ -200,38 +199,7 @@ myApp.displayCities = function(finalArray){
     });
 }
 
-//cities will appear below map where users will be taken too
-//cities will display some data about cities
 //users can click a city to pull pictures of their favorite activities in those countries/and or other pictures
-
-myApp.init = function(){
-    $('header').vide('videos/bgvid');
-    worldMap();
-    console.log('init');
-
-}; //init end
-
-$(document).ready(function(){ //doc rdy
-    myApp.init();     
-}); //doc rdy end
-
-//smooth scroll
-$(function() {
-  $('a[href*="#"]:not([href="#"])').click(function() {
-    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-      if (target.length) {
-        $('html, body').animate({
-          scrollTop: target.offset().top
-        }, 1000);
-        return false;
-      }
-    }
-  });
-});
-
-
 $('.section___results').on('click',".view___pix", function(e){
     e.preventDefault(); 
     var cityQuery = $(this).siblings('.cityHeader').children('.city___name').text();
@@ -239,7 +207,6 @@ $('.section___results').on('click',".view___pix", function(e){
     console.log(countryQuery);
     myApp.getPhotos(cityQuery);    
 });
-
 myApp.getPhotos = function(myQuery) {
     $.ajax({
         url: 'https://pixabay.com/api/',
@@ -256,7 +223,6 @@ myApp.getPhotos = function(myQuery) {
         myApp.displayPhotos(photoRes);
     });
 }
-
 myApp.displayPhotos = function(countryPhotos) {
     var thesePics = countryPhotos.hits;
     if (thesePics.length > 0){
@@ -267,3 +233,36 @@ myApp.displayPhotos = function(countryPhotos) {
         alert("No pictures found, sorry!");
     }
 };  
+//smooth scroll
+$(function() {
+  $('a[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
+myApp.init = function(){
+    $('header').vide('videos/bgvid');
+    worldMap();
+    console.log('init');
+}; //init end
+$(document).ready(function(){ //doc rdy
+    myApp.init();     
+}); //doc rdy end
+
+//smooth scroll
+
+
+
+
+
+
+
+
