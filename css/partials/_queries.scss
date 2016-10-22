@@ -68,6 +68,7 @@ $desktop: 1174px;
         }
     }
     .section___activity{
+        padding:5px;
         .wrapper{
             padding:15px;
         }
@@ -102,10 +103,10 @@ $desktop: 1174px;
     form{
             label{
                 padding:5px;
-                font-size:1rem;
-                line-height:1rem;
-                margin:5px 10px;
-                flex:0 1 55%;
+                // font-size:1rem;
+                // line-height:1rem;
+                // margin:5px 10px;
+                flex:1 1 40%;
                 text-align: center;
             }
             input[type=submit]{

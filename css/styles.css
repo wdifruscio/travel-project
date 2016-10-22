@@ -787,6 +787,9 @@ hgroup h1 {
     font-size: 1rem;
     line-height: 1.4rem;
   }
+  .section___activity {
+    padding: 5px;
+  }
   .section___activity .wrapper {
     padding: 15px;
   }
@@ -816,10 +819,7 @@ hgroup h1 {
 @media all and (max-width: 375px) {
   form label {
     padding: 5px;
-    font-size: 1rem;
-    line-height: 1rem;
-    margin: 5px 10px;
-    flex: 0 1 55%;
+    flex: 1 1 40%;
     text-align: center;
   }
   form input[type=submit] {
