@@ -48,6 +48,9 @@ $desktop: 1174px;
     }
 }
 @media all and (max-width:$smartphone){
+    .loader{
+        font-size:15px;
+    }
     .wrapper{
         width:98%;
     }
