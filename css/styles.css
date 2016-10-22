@@ -300,13 +300,13 @@ h1, h2 {
   text-decoration: none;
   letter-spacing: 1px;
   transition: 0.3s all ease;
-  border: 2px solid transparent;
+  border: 3px solid transparent;
 }
 
 .btn___home---header:hover {
   color: #120e1c;
   background: rgba(245, 245, 245, 0.9);
-  border: 2px solid black;
+  border: 3px solid black;
 }
 
 .btn___home {
