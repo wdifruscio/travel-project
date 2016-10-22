@@ -791,6 +791,9 @@ footer a {
   .wrapper {
     width: 98%;
   }
+  hgroup {
+    margin-top: 40%;
+  }
   hgroup h1 {
     font-size: 4rem;
     letter-spacing: 3px;
