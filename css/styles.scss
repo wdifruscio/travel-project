@@ -139,5 +139,20 @@ hgroup{
 
     }
 }
+footer{
+    background:$lightblue;
+    color:$black;
+    p{
+        width:100%;
+        padding:10px;
+        margin:0 auto;
+        margin-right:25px;
+        display:inline-block;
+        text-align: center;
+    }
+    a{
+        color:$black;
+    }
+}
 @import "partials/queries";
 

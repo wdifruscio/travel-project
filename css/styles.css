@@ -733,6 +733,24 @@ hgroup h1 {
   font-size: 1.2rem;
 }
 
+footer {
+  background: #a4def9;
+  color: #120e1c;
+}
+
+footer p {
+  width: 100%;
+  padding: 10px;
+  margin: 0 auto;
+  margin-right: 25px;
+  display: inline-block;
+  text-align: center;
+}
+
+footer a {
+  color: #120e1c;
+}
+
 @media all and (max-width: 1174px) {
   .section___activity {
     padding: 50px 0;
