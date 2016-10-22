@@ -16,12 +16,12 @@
         <meta name="twitter:url" content="https://website.com">
         <meta name="twitter:title" content="Title of website">
         <meta name="twitter:description" content="description">
-        <title>Untitled</title>
-        <link rel="icon" type="image/png" href="favicon.png">
+        <title>Find Your Adventure</title>
         <link href="https://fonts.googleapis.com/css?family=Pathway+Gothic+One|Ubuntu:400,700" rel="stylesheet">
-        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/swipebox.min.css">
         <link rel="stylesheet" href="css/jquery-jvectormap-2.0.3.css">
-        <link rel="stylesheet" href="https://unpkg.com/flickity@2.0/dist/flickity.css" media="screen">
+        <link rel="stylesheet" href="css/styles.css"> 
+        
     </head>
     <body>
         <header>
@@ -39,10 +39,10 @@
         </section>
         <section class="section___activity" id="section___activity">
             <div class="wrapper">
-                <div class="loader"></div>
+                <div class="loader" id="loaderOne"></div>
                 <hgroup class="section___title" id="form___title">
                     <h2>Points of Interest</h2>
-                    <p>Click the boxes if you want to find something with....</p>
+                    <p>Click the boxes if you want to find something with these activities. Leave blank to return all cities from that region.</p>
                 </hgroup>
                     <form>
                         <input type="checkbox" name="selectedActivities" id="hiking" value="hiking">
@@ -54,8 +54,8 @@
                         <input type="checkbox" name="selectedActivities" id="outdoors" value="outdoors">
                         <label for="outdoors">Outdoors</label>
                         
-                        <input type="checkbox" name="selectedActivities" id="streetfood" value="streetfood">
-                        <label for="streetfood">Diving</label>
+                        <input type="checkbox" name="selectedActivities" id="surfing" value="surfing">
+                        <label for="surfing">Surfing</label>
                         
                         <input type="checkbox" name="selectedActivities" id="cycling" value="cycling">
                         <label for="cycling">Cycling</label>
@@ -69,22 +69,36 @@
                         <input type="checkbox" name="selectedActivities" id="spa" value="spa">
                         <label for="spa">Spa</label>
 
-                        <input type="checkbox" name="selectedActivities" id="backpacker" value="backpacker">
-                        <label for="backpacker">Backpacker Friendly</label>
+                        <input type="checkbox" name="selectedActivities" id="golf" value="golf">
+                        <label for="golf">Golf</label>
                     <input type="submit" value="submit" class="btn___home">
                 </form>
             </div>
         </section>
-            <div class="results" id="results" data-flickity='   { "pageDots": false }'>
-            </div>
+        <section class="section___results">
+            <hgroup class="section___title">
+                <h1>Here are your results!</h1>
+                <p>If you didn't get what you wanted, try not filtering for activities to return all the cities in that region.</p>
+            </hgroup>
+            <div class="results" id="results"></div>
+            <a href="index.html" class ="btn___home">Start Over</a>
+        </section>
+        <!--modal-->
+        <div id="myModal" class="modal">
+            <div class="modal-content clearfix">
+            <span class="close">x</span>
+            <div class="modal-gallery" id="modalContent"></div>
+            <div class="loader" id="loaderTwo"></div>
         </div>
-
+            
+        </div>       
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
         <script src="https://unpkg.com/flickity@2.0/dist/flickity.pkgd.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
         <script src ="js/jquery-jvectormap-2.0.3.min.js"></script>
         <script src="js/jquery-jvectormap-continents-mill.js"></script>
         <script src="js/jquery.vide.min.js"></script>
+        <script src="js/jquery.swipebox.min.js"></script>  
         <script src="js/main.js"></script>
     </body>
 </html>
