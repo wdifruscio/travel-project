@@ -599,6 +599,7 @@ header {
 hgroup {
   text-align: center;
   margin: auto;
+  padding-bottom: 75px;
 }
 
 hgroup h1 {
