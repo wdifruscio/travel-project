@@ -717,7 +717,7 @@ hgroup h1 {
   transform: translateX(-50%);
   height: 3px;
   width: 75px;
-  background: darkgray;
+  background: #a4def9;
 }
 
 .section___activity form {
