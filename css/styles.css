@@ -764,6 +764,7 @@ footer a {
   }
   hgroup h1 {
     font-size: 5rem;
+    margin-top: 0;
   }
   .section___title h1 {
     font-size: 3rem;
@@ -790,9 +791,6 @@ footer a {
 @media all and (max-width: 480px) {
   .wrapper {
     width: 98%;
-  }
-  hgroup {
-    margin-top: 40%;
   }
   hgroup h1 {
     font-size: 4rem;
