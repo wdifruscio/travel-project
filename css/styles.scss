@@ -49,8 +49,9 @@ hgroup{
     margin:0;
     padding:75px;
     .wrapper{
-        background:$gray;
+        background: $white;
         padding:50px;
+        box-shadow: 1px 1px 5px rgba(128, 128, 128, 0.5)
     }
     .section___title{
         h2{

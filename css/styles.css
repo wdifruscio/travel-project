@@ -289,6 +289,24 @@ h1, h2 {
   }
 }
 
+.btn___home---header {
+  background: rgba(0, 233, 197, 0.9);
+  color: #eaeaea;
+  padding: 15px 45px;
+  margin: 20px auto;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: 0.3s all ease;
+}
+
+.btn___home---header:hover {
+  color: #120e1c;
+  background: rgba(234, 234, 234, 0.9);
+}
+
 .btn___home {
   background: #eaeaea;
   color: #120e1c;
@@ -675,8 +693,9 @@ hgroup h1 {
 }
 
 .section___activity .wrapper {
-  background: #e5e5e5;
+  background: #eaeaea;
   padding: 50px;
+  box-shadow: 1px 1px 5px rgba(128, 128, 128, 0.5);
 }
 
 .section___activity .section___title h2 {
