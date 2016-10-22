@@ -592,6 +592,8 @@ header {
   height: 100vh;
   min-height: 600px;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 hgroup {
@@ -734,7 +736,6 @@ hgroup h1 {
 }
 
 footer {
-  background: #a4def9;
   color: #120e1c;
 }
 

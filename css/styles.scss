@@ -2,7 +2,6 @@
 @import "partials/base";
 @import "partials/loader";
 @import "partials/buttons";
-@import "partials/map";
 @import "partials/figure";
 @import "partials/flickity";
 
@@ -14,6 +13,8 @@ header{
     height:100vh;;
     min-height:600px;
     display:flex;
+    justify-content: center;
+    align-items: center;
 }
 //hgroup for header -- should make more specific
 hgroup{
@@ -140,7 +141,6 @@ hgroup{
     }
 }
 footer{
-    background:$lightblue;
     color:$black;
     p{
         width:100%;
