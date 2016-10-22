@@ -9,13 +9,15 @@ var $results = $('#results');
 var $showActivites = $('.section___activity');
 var $loaderOne= $('#loaderOne');
 var $loderTwo= $('#loaderTwo');
+var activitySection = document.getElementById('section___activity');
 
 //scroll down and fadeIn fnct for map
 function mapClick(){
     myApp.findCityList();
     $showActivites.fadeIn();
         setTimeout(function(){
-            window.location.href='#section___activity';
+            $('.map___section').fadeOut();
+            
         },50);
 };
 function submitClick() {
@@ -33,6 +35,7 @@ $('form').on('submit',function(e){
     e.preventDefault();
     submitClick();
     myApp.findCityWithactivities(myApp.activitiesCities);
+    window.scrollTo(0,document.body.scrollHeight); 
 });
 
 //user lands on page
@@ -52,6 +55,7 @@ function worldMap(){ //vector map begin
         zoomAnimate:false,
         regionsSelectable: true, 
         regionsSelectableOne:true,
+        panOnDrag: false,        
       	regionStyle: {
 		  initial: {
 		    fill: '#a4def9',
@@ -61,7 +65,7 @@ function worldMap(){ //vector map begin
 		    "stroke-opacity": 1
 		  },
 		  hover: {
-		    "fill-opacity": 0.8,
+		    "fill-opacity": 0.6,
 		    cursor: 'pointer'
 		  },
 		  selected: {
@@ -84,8 +88,8 @@ myApp.findCityList = function(){
     }).then(function(res){
         $loaderOne.hide();
         $('form').fadeIn();
-        $('form').css('display','flex');
-        $("#form___title").fadeIn();   
+        $("#form___title").fadeIn();
+        activitySection.scrollIntoView();
         var cityList = res.result;
         myApp.findCityInRegion(cityList);
         // console.log(cityList);
@@ -187,10 +191,12 @@ myApp.displayCities = function(finalArray){
         $cityContainer.append($cityHeader,$leisureLabel,$leisureScore,$nightlifeLabel,$nightlifeScore,$safetyLabel,$safetyScore,$airbnbScore,$imageAnchor,$airBnbAnchor);
         $results.flickity({
             "pageDots": false,
-            "wrapAround":true
+            "initialIndex": 5,
+            "contain":true,
         });
         $results.flickity('append',$cityContainer);
-        window.location.href='#results';
+        var resultScrollId = document.getElementById('results');
+        resultScrollId.scrollIntoView();
     });
 }
 

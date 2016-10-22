@@ -4,13 +4,12 @@
 @import "partials/buttons";
 @import "partials/map";
 @import "partials/figure";
-@import "partials/modal";
 @import "partials/flickity";
 
+//display none on start. changes with interaction in js
 .section___activity, #form___title,{
     display:none;
 }
-
 header{
     height:100vh;;
     min-height:600px;
@@ -41,6 +40,7 @@ hgroup{
     h1{
         color:$black;
         text-align: center;
+        margin-top:20px;
     }
 }
 //activity selection section
@@ -48,6 +48,7 @@ hgroup{
     background: linear-gradient( rgba($lightblue,0.7), rgba($lightblue,0.7)), url(../assets/pattern.png);
     margin:0;
     padding:75px;
+    height:100%;
     .wrapper{
         background: $white;
         padding:50px;
@@ -98,7 +99,7 @@ hgroup{
                 // border:3px solid $white;  
             }
         }
-        input[type=submit]{
+        input[type=submit], .btn___startover{
             font-size:2.2rem;
             color:$white;
             flex:0 1 200px;
@@ -124,7 +125,6 @@ hgroup{
     margin:5% auto;
     transition:0.3s all ease;
 }
-
 .section___title{
     text-align: center;
     color:$black;
@@ -139,3 +139,5 @@ hgroup{
 
     }
 }
+@import "partials/queries";
+

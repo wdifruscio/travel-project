@@ -1,0 +1,117 @@
+$smallphone: 375px;
+$smartphone: 480px;
+$tabletPortrait: 767px;
+$tabletLandscape: 1024px;
+$desktop: 1174px;
+@media all and (max-width:$desktop){
+    .section___activity{
+        padding:50px 0;
+    }
+}
+@media all and (max-width:$tabletPortrait){
+    .wrapper{
+        width:90%;
+    }
+    hgroup{
+        h1{
+            font-size:5rem;
+        }
+    }
+    .section___title{
+        h1{
+            font-size:3rem;
+            letter-spacing: 2px;
+        }
+        p{
+            font-size:1.2rem;
+        }
+    }
+    .section___activity{
+        .wrapper{
+            padding:15px;
+        }
+        .section___title{
+            h2{
+                font-size:2.8rem;
+            }
+        }
+        form{
+            label{
+                padding:15px;
+                font-size:1.2rem;
+            }
+        }
+        .btn___restart{
+            text-align:center;
+        }
+    }
+}
+@media all and (max-width:$smartphone){
+    .wrapper{
+        width:98%;
+    }
+    hgroup{
+        h1{
+            font-size:4rem;
+            letter-spacing: 3px;
+        }
+    }
+    .section___title{
+        width:100%;
+        h1{
+            font-size:2.2rem;
+            letter-spacing: 1px;
+        }
+        p{
+            font-size:1rem;
+            line-height:1.4rem;
+        }
+    }
+    .section___activity{
+        .wrapper{
+            padding:15px;
+        }
+        .section___title{
+            h2{
+                font-size:2.2rem;
+                letter-spacing: 1px;
+            }
+        }
+        form{
+            label{
+                padding:10px;
+                font-size:1rem;
+                line-height:1.4rem;
+                margin:5px 10px;
+            }
+            input[type=submit]{
+                margin:15px auto;
+                font-size:1rem;
+                padding:10px 20px;
+            }
+        }
+        .btn___restart{
+            text-align:center;
+        }
+    }
+    .btn___main{
+        font-size:1rem;
+    }
+}
+@media all and (max-width:$smallphone){
+    form{
+            label{
+                padding:5px;
+                font-size:1rem;
+                line-height:1rem;
+                margin:5px 10px;
+                flex:0 1 55%;
+                text-align: center;
+            }
+            input[type=submit]{
+                margin:15px auto;
+                font-size:1rem;
+                padding:10px 20px;
+            }
+        }    
+}

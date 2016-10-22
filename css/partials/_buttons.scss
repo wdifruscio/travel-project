@@ -17,7 +17,7 @@
     }
 }
 
-.btn___home{
+.btn___main{
     background:$white;
     color:$black;
     border:3px solid $black;
@@ -28,4 +28,8 @@
     font-weight:600;
     text-decoration:none;
     letter-spacing:1px;
+}
+.btn___restart{
+    color:black;
+    align-self: flex-end;
 }
