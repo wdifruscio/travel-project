@@ -12,12 +12,12 @@ var $loderTwo= $('#loaderTwo');
 var activitySection = document.getElementById('section___activity');
 
 //scroll down and fadeIn fnct for map
+
 function mapClick(){
     myApp.findCityList();
     $showActivites.fadeIn();
         setTimeout(function(){
             $('.map___section').fadeOut();
-            
         },50);
 };
 function submitClick() {
@@ -32,8 +32,7 @@ $('label').on('click',function(){
 $('form').on('submit',function(e){
     e.preventDefault();
     submitClick();
-    myApp.findCityWithactivities(myApp.activitiesCities);
-    window.scrollTo(0,document.body.scrollHeight); 
+    myApp.findCityWithactivities(myApp.activitiesCities); 
 });
 //user lands on page
 //user is prompted to click on a region he would like to visit
@@ -194,7 +193,7 @@ myApp.displayCities = function(finalArray){
             "contain":true,
         });
         $results.flickity('append',$cityContainer);
-        var resultScrollId = document.getElementById('results');
+        var resultScrollId = document.getElementById('section___results');
         resultScrollId.scrollIntoView();
     });
 }
@@ -248,6 +247,7 @@ $(function() {
     }
   });
 });
+//display tooltip and hide tooltip
 myApp.init = function(){
     $('header').vide('videos/bgvid');
     worldMap();

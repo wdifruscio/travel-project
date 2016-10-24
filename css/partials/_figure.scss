@@ -3,13 +3,14 @@ figure{
     color:black;
     height:450px;
     width:300px;
-    margin:5px 5px;
+    margin:15px 15px;
     padding:25px 15px; 
     background-color:$white;
     background-attachment: top center;
     background-size:contain;
     background-repeat: no-repeat;
     border-radius:5px;
+    box-shadow: 1px 1px 5px rgba(128, 128, 128, 0.5);
     h3,h4{
         text-align: center;
     }

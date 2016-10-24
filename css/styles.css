@@ -343,13 +343,14 @@ figure {
   color: black;
   height: 450px;
   width: 300px;
-  margin: 5px 5px;
+  margin: 15px 15px;
   padding: 25px 15px;
   background-color: whitesmoke;
   background-attachment: top center;
   background-size: contain;
   background-repeat: no-repeat;
   border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(128, 128, 128, 0.5);
 }
 
 figure h3, figure h4 {
@@ -449,7 +450,7 @@ figure a:last-child {
 }
 
 .progress.red {
-  background: #e9742e;
+  background: #f44336;
 }
 
 .progress.yellow {
@@ -747,6 +748,7 @@ hgroup h1 {
   display: none;
   margin: 5% auto;
   transition: 0.3s all ease;
+  position: relative;
 }
 
 .section___title {
