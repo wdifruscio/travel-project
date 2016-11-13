@@ -334,9 +334,15 @@ h1, h2 {
 
 .btn___restart {
   color: black;
-  -webkit-align-self: flex-end;
-      -ms-flex-item-align: end;
-          align-self: flex-end;
+  text-align: center;
+}
+
+.btn___restart p {
+  padding-top: 20px;
+}
+
+.btn___restart a {
+  color: black;
 }
 
 figure {
